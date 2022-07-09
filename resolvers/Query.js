@@ -1,7 +1,7 @@
 // const { products, categories } = require("../db"); cause we used context
 exports.Query= {
-    products:(parent,{filter},{products})=>{
-        let filterProducts=products;
+    products:(parent,{filter},{db})=>{
+        let filterProducts=db.products;
 
         if(filter){
             if(filter.onSale===true){
@@ -12,16 +12,16 @@ exports.Query= {
         }
         return filterProducts;
     },
-    product:(parent,{id},{products})=>{
+    product:(parent,{id},{db})=>{
     //    console.log(args)
-    return products.find((product)=>product.id==id);
+    return db.products.find((product)=>product.id==id);
     },
-    categories:(parent,args,{categories})=>{
-        return categories
+    categories:(parent,args,{db})=>{
+        return db.categories
     },
-    category:(parent,{id},{categories})=>{
+    category:(parent,{id},{db})=>{
       
-        return categories.find((category)=> category.id===id);
+        return db.categories.find((category)=> category.id===id);
 
     }
 };

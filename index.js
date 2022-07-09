@@ -4,7 +4,7 @@ const { Query } = require("./resolvers/Query");
 const { Mutation } = require("./resolvers/Mutation");
 const { Category } = require("./resolvers/Category");
 const { Product } = require("./resolvers/Product");
-const { categories,products,reviews} = require("./db");
+const { db} = require("./db");
 //  import { ApolloServer } from 'apollo-server-express';
 //  import {ApolloServer, gql} from "apollo-server";
 
@@ -17,9 +17,7 @@ const server=new ApolloServer({
       Product
     },
     context:{
-      categories,
-      products,
-      reviews
+      db
     }
 });
 
